@@ -1,0 +1,34 @@
+#!/bin/bash
+a=$1 #read cmd parm
+case $a in
+	cat) echo "is a cat";;
+	dog|puppy) echo "puppy";;
+	*) echo "other";;
+esac
+
+function greet {
+	echo "Greeting"
+}
+
+greet
+
+
+function hello {
+	echo "Hi, $1 $2"
+}
+
+hello Jie
+hello "Jie Chen"
+hello Jie Chen
+
+function num {
+	i=0
+	for f in $@; do
+		echo $i: $f
+		((i++))
+	done
+}
+
+num $(ls)
+
+num pine apple me you
