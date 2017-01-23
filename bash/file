@@ -12,6 +12,10 @@ for i in name1 name2; do
  echo $i;
 done
 
+for i in $(ls)
+do
+	echo $i
+done
 
 freespace=$(df -h / | grep -E "\/$" | awk '{print $4}')
 greentext="\033[32m"
