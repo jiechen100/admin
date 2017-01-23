@@ -1,0 +1,29 @@
+#!/bin/bash
+if [[ "dog" = "dog" ]]
+then 
+	echo "=="
+else
+	echo "!="
+fi 
+
+a="This is my string!"
+if [[ $a =~ [0-9]+ ]]; then # =~ match regular expression
+	echo "number in string"
+else
+	echo "no number in string"
+fi 
+
+arr=("aa" "bb" "cc")
+for i in ${arr[@]}
+do
+	echo $i
+done
+
+
+declare -A arrr
+arrr["name"]="jie"
+arrr["id"]="123"
+for i in ${!arrr[@]}
+do
+	echo $i: ${arrr[$i]}
+done
