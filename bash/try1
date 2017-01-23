@@ -3,11 +3,50 @@ echo
 echo Hello, ${USER}, \(we are here.\)
 echo '${PWD}='${PWD} 
 echo '$(tty)='$(tty)
+echo '${MACHTYPE}='${MACHTYPE}
+echo '${HOSTNAME}='${HOSTNAME}
+echo '${BASH_VERSION}='${BASH_VERSION}
+echo '${SECONDS}='${SECONDS}
+
+echo 
+a=Hello
+b="world"
+c=2017
+echo $a $b, $c 
 
 echo 
 sed_test="echo 'abcd123 cxv678' |tee /dev/tty | sed 's/\([a-z]*\).* \([a-z]*\).*/\1xx \1yy/'"
 echo ${sed_test}
-eval "$sed_test"
+eval $sed_test
 
 echo 
 echo $(ls)
+
+
+echo
+declare -i i=1
+declare -r readonly=123
+declare -l lowercase="LOWERcase"
+declare -u uppercase="upperCase"
+echo $lowercase, $uppercase
+
+a=$(ping -c 1 localhost | grep 'bytes from' | cut -d = -f 4)
+echo "ping is " ${a}
+
+d=2
+e=$((d+2))
+echo $e
+((e++))
+echo $e
+((e*=3))
+echo $e
+((e=e**2))
+echo $e
+((e%=10))
+echo $e
+
+echo Float
+f=$((1/3))
+echo $f
+g=$(echo 1/3 | bc -l)
+echo $g
