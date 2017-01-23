@@ -1,0 +1,15 @@
+#!/bin/bash
+date +"%d-%m-%Y %H-%M-%S"
+
+date +"%d-%m-%Y, %h, %H-%M-%s" #see date help
+
+printf "Name:\t%s\nID:\t%04d\n" "Jie" "12"
+printf "Name:\tID:\n"
+printf "Jie\t12\n"
+printf "Chen\t13\n"
+
+today=$(date +"%d-%m-%y")
+time=$(date +"%H:%M:%S")
+printf -v d "Current User:\t%s\nDate:\t\t%s @ %s\n" $USER $today $time
+echo $d
+echo "$d" #print new line
