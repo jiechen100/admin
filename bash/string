@@ -1,0 +1,29 @@
+#!/bin/bash
+[[ 20 -lt 100 ]]
+echo $?
+
+a=""
+b="01234567"
+[[ -z $a  && -n $b ]] #a is null and b is not null
+echo $?
+
+echo ${#b} #length of b, #b
+echo ${b:4} ${b:3:2} 
+
+b="apple banana banana banana cherry"
+echo ${b/bana/aaa} 
+echo ${b//bana/aaa}  
+echo ${b//bana/}  
+echo ${b/#apple/begin}  
+
+echo
+flashred="\033[5;31;40m"
+red="\033[31;40m"
+none="\033[0m"
+echo -e $flashred"ERROR: "$none$red"Error message ..."$none #-e is escape
+
+echo
+flashred=$(tput setab 0; tput setaf 1; tput blink)
+red=$(tput setab 0; tput setaf 1)
+none=$(tput sgr0)
+echo -e $flashred"ERROR: "$none$red"Error message ..."$none #-e is escape
