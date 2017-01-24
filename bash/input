@@ -17,3 +17,10 @@ do
 	*) echo which anmial you pick?;;
   esac
 done
+
+echo
+read -p "What's for lunch?" lunch
+while [[ -z "$lunch" ]]; do
+	read -p "What's your lunch? I am presparing to cook!" lunch
+done
+echo You like to eat $lunch .
