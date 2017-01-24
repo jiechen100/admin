@@ -1,0 +1,19 @@
+#!/bin/bash
+echo "What is your name?"
+read name
+read -s -p "What is your password?" password
+echo
+read -p "What is your fav animal?" animal
+echo name: $name, pass:$password, animal:$animal
+
+select animal in "cat" "dog" "bird" "duck" "quit"
+do 
+  case $animal in
+	cat) echo "Cats like to sleep in day time";;
+        dog) echo Dogs like to bark;;
+	bird) echo Birds like to sing;;
+	duck) echo Ducks like to swim;;
+	quit) break;;
+	*) echo which anmial you pick?;;
+  esac
+done
