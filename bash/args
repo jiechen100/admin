@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "There are " $# "arguments " $@
+
+i=1
+for arg in $@; do
+  echo $i:$arg
+  ((i++))
+done
+
+echo
+# -umyusername -pmypassword is the same as -u myusername -p mypassword
+# $OPTARG has value for -u -p not for -ab or -a -b
+while getopts :u:p:ab opt; do
+   case $opt in
+       u) user=$OPTARG;;
+       p) pass=$OPTARG;;
+       a|b) echo "Got $opt $OPTARG";;
+       ?) echo "Undefined flag";;
+   esac
+done
+
+echo "User: $user / Pass: $pass"
