@@ -1,4 +1,26 @@
 #!/bin/bash
+echo "There are " $# "arguments " $@
+
+i=1
+for arg in $@; do
+  echo $i:$arg
+  ((i++))
+done
+
+echo
+# -umyusername -pmypassword is the same as -u myusername -p mypassword
+# $OPTARG has value for -u -p not for -ab or -a -b
+while getopts :u:p:ab opt; do
+   case $opt in
+       u) user=$OPTARG;;
+       p) pass=$OPTARG;;
+       a|b) echo "Got $opt $OPTARG";;
+       ?) echo "Undefined flag";;
+   esac
+done
+
+echo "User: $user / Pass: $pass"
+
 echo "What is your name?"
 read name
 read -s -p "What is your password?" password
@@ -24,3 +46,18 @@ while [[ -z "$lunch" ]]; do
 	read -p "What's your lunch? I am presparing to cook!" lunch
 done
 echo You like to eat $lunch .
+
+echo
+read -p "What's for dinner? [noodle]" dinner
+while [[ -z "$dinner" ]]; do
+	dinner="noodle"
+done
+echo You like to eat $dinner .
+
+
+echo
+read -p "What's birth year? [yyyy]" yyyy
+while [[ ! $yyyy =~ [1-2][0-9]{3} ]]; do
+	read -p "Invalid year, please enter again [yyyy]" yyyy
+done
+echo Your birth year is $yyyy .
